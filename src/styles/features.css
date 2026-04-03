@@ -1,0 +1,204 @@
+.features {
+  position: relative;
+  overflow: hidden;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+/* Feature Card */
+.feature-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-slow);
+  cursor: default;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-blue);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.feature-card:hover {
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(37,99,235,0.1) inset;
+  transform: translateY(-6px);
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+}
+
+.feature-card--accent::after {
+  background: var(--gradient-gold);
+}
+
+.feature-card--accent:hover {
+  border-color: rgba(240, 165, 0, 0.25);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(240,165,0,0.1) inset;
+}
+
+/* Card Number */
+.feature-card__number {
+  position: absolute;
+  top: var(--space-xl);
+  right: var(--space-xl);
+  font-family: var(--font-primary);
+  font-size: var(--text-5xl);
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Icon */
+.feature-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.feature-card__icon-wrap--blue {
+  background: var(--color-secondary-light);
+  border: 1px solid rgba(37,99,235,0.2);
+  box-shadow: 0 4px 14px rgba(37,99,235,0.15);
+}
+
+.feature-card__icon-wrap--gold {
+  background: var(--color-accent-light);
+  border: 1px solid rgba(240,165,0,0.2);
+  box-shadow: 0 4px 14px rgba(240,165,0,0.15);
+}
+
+.feature-card__icon-wrap--green {
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.2);
+  box-shadow: 0 4px 14px rgba(16,185,129,0.1);
+}
+
+.feature-card__icon-wrap--purple {
+  background: rgba(139,92,246,0.1);
+  border: 1px solid rgba(139,92,246,0.2);
+  box-shadow: 0 4px 14px rgba(139,92,246,0.1);
+}
+
+.feature-card__icon-wrap--rose {
+  background: rgba(244,63,94,0.1);
+  border: 1px solid rgba(244,63,94,0.2);
+}
+
+.feature-card__title {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.feature-card__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+}
+
+.feature-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.feature-card__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.feature-card__check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #34d399;
+}
+
+.feature-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: #60a5fa;
+  transition: all var(--transition-fast);
+}
+
+.feature-card__link:hover {
+  gap: var(--space-md);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 1024px) {
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+}
